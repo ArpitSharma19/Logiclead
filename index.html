@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FASTag Recharge | Logiclead</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/responsive.css" />
+</head>
+
+<body>
+    <!-- Loader -->
+    <div id="pageLoader" class="d-none">
+        <div class="loader-content text-center">
+            <div class="spinner-border text-light" role="status"></div>
+            <p class="text-light mt-2">Please wait...</p>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="custom-navbar">
+        <div class="top-row row align-items-center justify-content-between">
+            <!-- Logo + Brand -->
+            <div class="logo col-auto">
+                <a href="index.html" class="brand-link">
+                    <img src="assets/img/banking_logo/logic_img2.png" alt="Logo" />
+                </a>
+            </div>
+
+            <!-- Right (Desktop) -->
+            <div class="right d-none d-lg-flex align-items-center col-auto">
+                <a href="javascript:void(0)" class="profile-avatar me-3">
+                    <i class="fa-solid fa-wallet text-white fs-6"></i>
+                    <span id="walletSummaryTextDesktop" class="text-white ms-2 fs-6">Wallet</span>
+                </a>
+                <div class="profile profile-avatar">
+                    <a href="login.html" id="profileLinkDesktop">
+                        <img src="assets/img/new-guest-user-male.svg" alt="Profile" />
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right (Mobile) -->
+            <div class="d-flex d-lg-none align-items-center col-auto">
+                <a href="javascript:void(0)" class="profile-avatar me-3">
+                    <i class="fa-solid fa-wallet text-white fs-6"></i>
+                    <span id="walletSummaryText" class="text-white ms-2 small">Wallet</span>
+                </a>
+                <div class="profile profile-avatar">
+                    <a href="login.html" id="profileLinkMobile">
+                        <img src="assets/img/new-guest-user-male.svg" alt="Profile" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Profile Dropdown -->
+    <div id="profileDropdown" class="dropdown-menu dropdown-menu-end d-none" style="display:block; position:absolute; right:10px; top:50px;">
+        <div class="px-3 py-2">
+            <div class="d-flex align-items-center mb-2">
+                <img src="assets/img/new-guest-user-male.svg" alt="User" style="width:28px;height:28px;" class="me-2" />
+                <div>
+                    <div class="small fw-semibold">Logged in</div>
+                    <div id="userEmailDisplay" class="small text-muted">user@gmail.com</div>
+                </div>
+            </div>
+            <a class="btn btn-sm btn-outline-danger w-100" href="javascript:void(0)" onclick="logout()">Logout</a>
+        </div>
+    </div>
+
+    <!-- Fixed Summary -->
+    <div id="fixedSummary" class="position-fixed d-none">
+        <div class="text-center mb-2">
+            <h6 class="mb-0 small text-white opacity-75">Last Recharge</h6>
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <i class="fa-solid fa-car me-2"></i>
+                <span id="fixedVehicle">-</span>
+            </div>
+            <div class="fw-bold fs-6">
+                ₹<span id="fixedAmount">0</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+
+                <!-- Left Side -->
+                <div class="col-lg-6 text-lg-start text-center mb-lg-0">
+                    <h1 class="hero-title">
+                        FASTag Recharge <br /> Online at Logiclead
+                    </h1>
+                    <ul class="hero-list list-unstyled">
+                        <li><i class="fa-solid fa-circle"></i> Multiple Payment Options</li>
+                        <li><i class="fa-solid fa-circle"></i> Multiple Discounts & Offers for FASTag</li>
+                        <li><i class="fa-solid fa-circle"></i> 24×7 Customer Support</li>
+                    </ul>
+                </div>
+
+                <!-- Right Side -->
+                <div class="col-lg-6">
+                    <div class="hero-card">
+                        <div class="form-check d-flex justify-content-between align-items-center p-3">
+                            <label class="form-check-label fw-semibold text-white">FASTag Recharge</label>
+                            <img src="assets/img/icons/bbps-new-2.png" alt="Bharat Connect" width="70" height="20" />
+                        </div>
+                        <div class="px-3 pb-3">
+                            <input type="text" id="vehicleInput" class="form-control mb-3" placeholder="Enter vehicle number" />
+                            <button id="proceedBtn" class="btn btn-secondary w-100">Proceed</button>
+                            <small class="text-dark d-block mt-2">
+                                <i class="bi bi-lightning-charge-fill"></i>
+                                Get the best deals on FASTag Recharge
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+        <!-- Banner -->
+    <section>
+        <img src="assets/img/Website Banner 4.png" alt="FASTag Banner" class="img-fluid w-100" />
+    </section>
+
+    <!-- FASTag Providers -->
+    <section class="provider-section py-5">
+        <div class="container">
+            <h3 class="text-center mb-4">FASTag Provider</h3>
+            <div class="row g-3">
+                <!-- Row 1 -->
+                <div class="col-6 col-md-3 col-lg-2">
+                    <div class="card text-center h-100 shadow-sm border-0 provider-card" onclick="scrollToTop()">
+                        <div class="card-body d-flex flex-column align-items-center justify-content-center border rounded">
+                            <img src="assets/img/banking_logo/IHMCL-Logo.jpeg" alt="Indian Highways" class="img-fluid mb-2" style="max-height: 40px;" />
+                            <p class="mb-0 small fw-medium">Indian Highways...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 col-lg-2">
+                    <div class="card text-center h-100 shadow-sm border-0 provider-card" onclick="scrollToTop()">
+                        <div class="card-body d-flex flex-column align-items-center justify-content-center border rounded">
+                            <svg width="40" height="40" viewBox="0 0 100 100" class="mb-2">
+                                <rect width="100" height="100" fill="#8B0000" rx="10"/>
+                                <text x="50" y="35" text-anchor="middle" fill="white" font-size="12" font-weight="bold">IndusInd</text>
+                                <text x="50" y="55" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Bank</text>
+                            </svg>
+                            <p class="mb-0 small fw-medium">IndusInd Bank</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 col-lg-2">
+                    <div class="card text-center h-100 shadow-sm border-0 provider-card" onclick="scrollToTop()">
+                        <div class="card-body d-flex flex-column align-items-center justify-content-center border rounded">
+                            <svg width="40" height="40" viewBox="0 0 100 100" class="mb-2">
+                                <rect width="100" height="100" fill="#FF6600" rx="10"/>
+                                <text x="50" y="30" text-anchor="middle" fill="white" font-size="10" font-weight="bold">Bank of</text>
+                                <text x="50" y="50" text-anchor="middle" fill="white" font-size="10" font-weight="bold">Baroda</text>
+                            </svg>
+                            <p class="mb-0 small fw-medium">Bank of Baroda</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 col-lg-2">
+                    <div class="card text-center h-100 shadow-sm border-0 provider-card" onclick="scrollToTop()">
+                        <div class="card-body d-flex flex-column align-items-center justify-content-center border rounded">
+                            <svg width="40" height="40" viewBox="0 0 100 100" class="mb-2">
+                                <rect width="100" height="100" fill="#800080" rx="10"/>
+                                <text x="50" y="35" text-anchor="middle" fill="white" font-size="14" font-weight="bold">AXIS</text>
+                                <text x="50" y="55" text-anchor="middle" fill="white" font-size="10">BANK</text>
+                            </svg>
+                            <p class="mb-0 small fw-medium">Axis Bank</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 col-lg-2">
+                    <div class="card text-center h-100 shadow-sm border-0 provider-card" onclick="scrollToTop()">
+                        <div class="card-body d-flex flex-column align-items-center justify-content-center border rounded">
+                            <svg width="40" height="40" viewBox="0 0 100 100" class="mb-2">
+                                <rect width="100" height="100" fill="#FF0000" rx="10"/>
+                                <text x="50" y="30" text-anchor="middle" fill="white" font-size="9" font-weight="bold">IDFC FIRST</text>
+                                <text x="50" y="50" text-anchor="middle" fill="white" font-size="9" font-weight="bold">Bank</text>
+                            </svg>
+                            <p class="mb-0 small fw-medium">IDFC FIRST Bank</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 col-lg-2">
+                    <div class="card text-center h-100 shadow-sm border-0 provider-card" onclick="scrollToTop()">
+                        <div class="card-body d-flex flex-column align-items-center justify-content-center border rounded">
+                            <svg width="40" height="40" viewBox="0 0 100 100" class="mb-2">
+                                <rect width="100" height="100" fill="#004B87" rx="10"/>
+                                <text x="50" y="35" text-anchor="middle" fill="white" font-size="12" font-weight="bold">HDFC</text>
+                                <text x="50" y="55" text-anchor="middle" fill="white" font-size="10">Bank</text>
+                            </svg>
+                            <p class="mb-0 small fw-medium">HDFC Bank</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 2 -->
+                <div class="col-6 col-md-3 col-lg-2">
+                    <div class="card text-center h-100 shadow-sm border-0 provider-card" onclick="scrollToTop()">
+                        <div class="card-body d-flex flex-column align-items-center justify-content-center border rounded">
+                            <svg width="40" height="40" viewBox="0 0 100 100" class="mb-2">
+                                <rect width="100" height="100" fill="#ED1C24" rx="10"/>
+                                <text x="50" y="35" text-anchor="middle" fill="white" font-size="12" font-weight="bold">kotak</text>
+                                <text x="50" y="55" text-anchor="middle" fill="white" font-size="8">Mahindra Bank</text>
+                            </svg>
+                            <p class="mb-0 small fw-medium">Kotak Mahindra...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 col-lg-2">
+                    <div class="card text-center h-100 shadow-sm border-0 provider-card" onclick="scrollToTop()">
+                        <div class="card-body d-flex flex-column align-items-center justify-content-center border rounded">
+                            <svg width="40" height="40" viewBox="0 0 100 100" class="mb-2">
+                                <rect width="100" height="100" fill="#0066CC" rx="10"/>
+                                <text x="50" y="40" text-anchor="middle" fill="white" font-size="12" font-weight="bold">equitas</text>
+                            </svg>
+                            <p class="mb-0 small fw-medium">Equitas</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 col-lg-2">
+                    <div class="card text-center h-100 shadow-sm border-0 provider-card" onclick="scrollToTop()">
+                        <div class="card-body d-flex flex-column align-items-center justify-content-center border rounded">
+                            <svg width="40" height="40" viewBox="0 0 100 100" class="mb-2">
+                                <rect width="100" height="100" fill="#00A651" rx="10"/>
+                                <text x="50" y="35" text-anchor="middle" fill="white" font-size="12" font-weight="bold">IDBI</text>
+                                <text x="50" y="55" text-anchor="middle" fill="white" font-size="10">Bank</text>
+                            </svg>
+                            <p class="mb-0 small fw-medium">IDBI Bank</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 col-lg-2">
+                    <div class="card text-center h-100 shadow-sm border-0 provider-card" onclick="scrollToTop()">
+                        <div class="card-body d-flex flex-column align-items-center justify-content-center border rounded">
+                            <svg width="40" height="40" viewBox="0 0 100 100" class="mb-2">
+                                <rect width="100" height="100" fill="#0066CC" rx="10"/>
+                                <text x="50" y="40" text-anchor="middle" fill="white" font-size="16" font-weight="bold">IOB</text>
+                            </svg>
+                            <p class="mb-0 small fw-medium">IOB</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 col-lg-2">
+                    <div class="card text-center h-100 shadow-sm border-0 provider-card" onclick="scrollToTop()">
+                        <div class="card-body d-flex flex-column align-items-center justify-content-center border rounded">
+                            <svg width="40" height="40" viewBox="0 0 100 100" class="mb-2">
+                                <rect width="100" height="100" fill="#FF6600" rx="10"/>
+                                <text x="50" y="30" text-anchor="middle" fill="white" font-size="8" font-weight="bold">Jammu and</text>
+                                <text x="50" y="45" text-anchor="middle" fill="white" font-size="8" font-weight="bold">Kashmir...</text>
+                            </svg>
+                            <p class="mb-0 small fw-medium">Jammu and Kashm...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 col-lg-2">
+                    <div class="card text-center h-100 shadow-sm border-0 provider-card" onclick="scrollToTop()">
+                        <div class="card-body d-flex flex-column align-items-center justify-content-center border rounded">
+                            <svg width="40" height="40" viewBox="0 0 100 100" class="mb-2">
+                                <rect width="100" height="100" fill="#800080" rx="10"/>
+                                <text x="50" y="30" text-anchor="middle" fill="white" font-size="10" font-weight="bold">Karnataka</text>
+                                <text x="50" y="50" text-anchor="middle" fill="white" font-size="10" font-weight="bold">Bank</text>
+                            </svg>
+                            <p class="mb-0 small fw-medium">Karnataka Bank</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 3 -->
+                <div class="col-6 col-md-3 col-lg-2">
+                    <div class="card text-center h-100 shadow-sm border-0 provider-card" onclick="scrollToTop()">
+                        <div class="card-body d-flex flex-column align-items-center justify-content-center border rounded">
+                            <svg width="40" height="40" viewBox="0 0 100 100" class="mb-2">
+                                <rect width="100" height="100" fill="#00BAF2" rx="10"/>
+                                <text x="50" y="30" text-anchor="middle" fill="white" font-size="10" font-weight="bold">Paytm</text>
+                                <text x="50" y="50" text-anchor="middle" fill="white" font-size="8">Payments...</text>
+                            </svg>
+                            <p class="mb-0 small fw-medium">Paytm Payments...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 col-lg-2">
+                    <div class="card text-center h-100 shadow-sm border-0 provider-card" onclick="scrollToTop()">
+                        <div class="card-body d-flex flex-column align-items-center justify-content-center border rounded">
+                            <svg width="40" height="40" viewBox="0 0 100 100" class="mb-2">
+                                <rect width="100" height="100" fill="#1F4E79" rx="10"/>
+                                <text x="50" y="30" text-anchor="middle" fill="white" font-size="10" font-weight="bold">State Bank</text>
+                                <text x="50" y="50" text-anchor="middle" fill="white" font-size="10" font-weight="bold">of I...</text>
+                            </svg>
+                            <p class="mb-0 small fw-medium">State Bank of I...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 col-lg-2">
+                    <div class="card text-center h-100 shadow-sm border-0 provider-card" onclick="scrollToTop()">
+                        <div class="card-body d-flex flex-column align-items-center justify-content-center border rounded">
+                            <svg width="40" height="40" viewBox="0 0 100 100" class="mb-2">
+                                <rect width="100" height="100" fill="#FF6600" rx="10"/>
+                                <text x="50" y="30" text-anchor="middle" fill="white" font-size="10" font-weight="bold">Federal</text>
+                                <text x="50" y="50" text-anchor="middle" fill="white" font-size="10" font-weight="bold">Bank</text>
+                            </svg>
+                            <p class="mb-0 small fw-medium">Federal Bank</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 col-lg-2">
+                    <div class="card text-center h-100 shadow-sm border-0 provider-card" onclick="scrollToTop()">
+                        <div class="card-body d-flex flex-column align-items-center justify-content-center border rounded">
+                            <img src="assets/img/banking_logo/13102943-icici-b9b38f77-216e-45f2-891b-edf7a7643433.webp" alt="ICICI Bank" class="img-fluid mb-2" style="max-height: 40px;" />
+                            <p class="mb-0 small fw-medium">ICICI Bank</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 col-lg-2">
+                    <div class="card text-center h-100 shadow-sm border-0 provider-card" onclick="scrollToTop()">
+                        <div class="card-body d-flex flex-column align-items-center justify-content-center border rounded">
+                            <svg width="40" height="40" viewBox="0 0 100 100" class="mb-2">
+                                <rect width="100" height="100" fill="#FFD700" rx="10"/>
+                                <text x="50" y="35" text-anchor="middle" fill="black" font-size="12" font-weight="bold">UCO</text>
+                                <text x="50" y="55" text-anchor="middle" fill="black" font-size="10">BANK</text>
+                            </svg>
+                            <p class="mb-0 small fw-medium">UCO Bank</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 col-lg-2">
+                    <div class="card text-center h-100 shadow-sm border-0 provider-card" onclick="scrollToTop()">
+                        <div class="card-body d-flex flex-column align-items-center justify-content-center border rounded">
+                            <svg width="40" height="40" viewBox="0 0 100 100" class="mb-2">
+                                <rect width="100" height="100" fill="#E60012" rx="10"/>
+                                <text x="50" y="30" text-anchor="middle" fill="white" font-size="10" font-weight="bold">Airtel</text>
+                                <text x="50" y="50" text-anchor="middle" fill="white" font-size="8">Payments...</text>
+                            </svg>
+                            <p class="mb-0 small fw-medium">Airtel Payments...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 4 -->
+                <div class="col-6 col-md-3 col-lg-2">
+                    <div class="card text-center h-100 shadow-sm border-0 provider-card" onclick="scrollToTop()">
+                        <div class="card-body d-flex flex-column align-items-center justify-content-center border rounded">
+                            <svg width="40" height="40" viewBox="0 0 100 100" class="mb-2">
+                                <rect width="100" height="100" fill="#800080" rx="10"/>
+                                <text x="50" y="35" text-anchor="middle" fill="white" font-size="14" font-weight="bold">AXIS</text>
+                                <text x="50" y="55" text-anchor="middle" fill="white" font-size="10">BANK</text>
+                            </svg>
+                            <p class="mb-0 small fw-medium">Axis Bank</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 col-lg-2">
+                    <div class="card text-center h-100 shadow-sm border-0 provider-card" onclick="scrollToTop()">
+                        <div class="card-body d-flex flex-column align-items-center justify-content-center border rounded">
+                            <svg width="40" height="40" viewBox="0 0 100 100" class="mb-2">
+                                <rect width="100" height="100" fill="#0066CC" rx="10"/>
+                                <text x="50" y="25" text-anchor="middle" fill="white" font-size="8" font-weight="bold">Bank of</text>
+                                <text x="50" y="40" text-anchor="middle" fill="white" font-size="8" font-weight="bold">Maharas...</text>
+                            </svg>
+                            <p class="mb-0 small fw-medium">Bank of Maharas...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 col-lg-2">
+                    <div class="card text-center h-100 shadow-sm border-0 provider-card" onclick="scrollToTop()">
+                        <div class="card-body d-flex flex-column align-items-center justify-content-center border rounded">
+                            <svg width="40" height="40" viewBox="0 0 100 100" class="mb-2">
+                                <rect width="100" height="100" fill="#FF6600" rx="10"/>
+                                <text x="50" y="30" text-anchor="middle" fill="white" font-size="10" font-weight="bold">Indian</text>
+                                <text x="50" y="50" text-anchor="middle" fill="white" font-size="10" font-weight="bold">Bank</text>
+                            </svg>
+                            <p class="mb-0 small fw-medium">Indian Bank</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 col-lg-2">
+                    <div class="card text-center h-100 shadow-sm border-0 provider-card" onclick="scrollToTop()">
+                        <div class="card-body d-flex flex-column align-items-center justify-content-center border rounded">
+                            <img src="assets/img/banking_logo/livquik_logo.jpg" alt="LivQuik Technologies" class="img-fluid mb-2" style="max-height: 40px;" />
+                            <p class="mb-0 small fw-medium">LivQuik Technol...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 col-lg-2">
+                    <div class="card text-center h-100 shadow-sm border-0 provider-card" onclick="scrollToTop()">
+                        <div class="card-body d-flex flex-column align-items-center justify-content-center border rounded">
+                            <svg width="40" height="40" viewBox="0 0 100 100" class="mb-2">
+                                <rect width="100" height="100" fill="#8B0000" rx="10"/>
+                                <text x="50" y="25" text-anchor="middle" fill="white" font-size="8" font-weight="bold">South Indian</text>
+                                <text x="50" y="40" text-anchor="middle" fill="white" font-size="8" font-weight="bold">Ba...</text>
+                            </svg>
+                            <p class="mb-0 small fw-medium">South Indian Ba...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 col-lg-2">
+                    <div class="card text-center h-100 shadow-sm border-0 provider-card" onclick="scrollToTop()">
+                        <div class="card-body d-flex flex-column align-items-center justify-content-center border rounded">
+                            <svg width="40" height="40" viewBox="0 0 100 100" class="mb-2">
+                                <rect width="100" height="100" fill="#0066CC" rx="10"/>
+                                <text x="50" y="25" text-anchor="middle" fill="white" font-size="8" font-weight="bold">Union Bank</text>
+                                <text x="50" y="40" text-anchor="middle" fill="white" font-size="8" font-weight="bold">of I...</text>
+                            </svg>
+                            <p class="mb-0 small fw-medium">Union Bank of I...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us -->
+    <section class="about-us py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h2>About Us</h2>
+                    <p>
+                        Welcome to <b>Logiclead</b>, your trusted platform for FASTag recharge.
+                        We make it easy for vehicle owners to recharge their FASTag quickly and securely from anywhere.
+                    </p>
+                    <p>
+                        Our goal is to save your time at toll plazas by providing a smooth recharge experience
+                        with multiple payment options. With reliable service, exciting offers,
+                        and dedicated support, we make your travel easier and more convenient.
+                    </p>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <img src="assets/img/banking_logo/mactc8ig_fastag_625x300_17_February_25.jpg"
+                         alt="About Us" class="img-fluid rounded shadow" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">What is FASTag? <span class="icon">+</span></button>
+                    <div class="faq-answer">
+                        <p>FASTag is a prepaid tag fixed on your vehicle’s windscreen that enables automatic toll payment at toll plazas using RFID technology.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">How can I recharge my FASTag on Logiclead? <span class="icon">+</span></button>
+                    <div class="faq-answer">
+                        <p>Enter your vehicle/FASTag details, choose a recharge amount, select your payment method, and complete the payment.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">What payment methods are accepted? <span class="icon">+</span></button>
+                    <div class="faq-answer">
+                        <p>Logiclead supports UPI, debit/credit cards, net banking, and digital wallets.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Is there any minimum recharge amount? <span class="icon">+</span></button>
+                    <div class="faq-answer">
+                        <p>The minimum recharge depends on the issuing bank; on Logiclead, you can start from ₹100.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">How long does it take for the recharge to reflect? <span class="icon">+</span></button>
+                    <div class="faq-answer">
+                        <p>Recharges are usually credited instantly; in rare cases, it may take up to 30 minutes depending on the bank network.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Download -->
+    <section class="app-section py-5 text-center text-white">
+        <div class="container">
+            <h2 class="mb-3">Download Our App</h2>
+            <p class="mb-4">
+                Recharge your FASTag on the go with our mobile app.  
+                Stay updated with your wallet balance and transactions anytime, anywhere.
+            </p>
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                <a href="#" class="btn btn-dark d-flex align-items-center px-4 py-2">
+                    <i class="fab fa-google-play me-2 fs-5"></i> Google Play
+                </a>
+                <a href="#" class="btn btn-light d-flex align-items-center px-4 py-2">
+                    <i class="fab fa-apple me-2 fs-5"></i> App Store
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact-section py-5 bg-light">
+        <div class="container text-center">
+            <h2 class="mb-4">Contact Us</h2>
+            <p class="lead mb-3">Have questions or need help? We’d love to hear from you.</p>
+            <p class="mb-1">
+                <i class="fa-solid fa-envelope me-2 text-primary"></i>
+                <a href="mailto:support@logiclead.in">support@logiclead.in</a>
+            </p>
+            <p class="mb-1">
+                <i class="fa-solid fa-phone me-2 text-primary"></i>
+                <a href="tel:+919876543210">+91 98765 43210</a>
+            </p>
+            <p>
+                <i class="fa-solid fa-location-dot me-2 text-primary"></i>
+                123, Business Hub, New Delhi – 110001
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-4 text-white">
+        <div class="container">
+            <div class="row align-items-center text-center text-md-start">
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <img src="assets/img/banking_logo/logic_img2.png" alt="Logiclead"
+                         class="img-fluid" style="max-height:45px;" />
+                </div>
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item"><a href="index.html" class="text-white text-decoration-none">Home</a></li>
+                        <li class="list-inline-item"><a href="about.html" class="text-white text-decoration-none">About Us</a></li>
+                        <li class="list-inline-item"><a href="faq.html" class="text-white text-decoration-none">FAQ</a></li>
+                        <li class="list-inline-item"><a href="contact.html" class="text-white text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <div class="social-icons d-flex justify-content-center justify-content-md-end gap-3">
+                        <a href="#" class="text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="border-light my-3" />
+            <div class="text-center small">
+                &copy; 2025 Logiclead Technologies Pvt. Ltd. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script -->
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+/* ==========================
+   Responsive Adjustments
+   (Additional Layer)
+========================== */
+
+/* ----- Large Screens (≥1200px) ----- */
+@media (min-width: 1200px) {
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    .hero-card {
+        max-width: 420px;
+        margin-left: auto;
+    }
+}
+
+/* ----- Laptops and Tablets (768px–1199px) ----- */
+@media (max-width: 1199px) and (min-width: 768px) {
+    .custom-navbar .right {
+        gap: 15px;
+    }
+
+    .hero-title {
+        font-size: 2.4rem;
+    }
+
+    .hero-card {
+        margin-top: 30px;
+    }
+
+    .provider-section .col-md-3 {
+        flex: 0 0 33.33%;
+        max-width: 33.33%;
+    }
+}
+
+/* ----- Tablets (≤991px) ----- */
+@media (max-width: 992px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-section {
+        text-align: center;
+        padding: 80px 0;
+    }
+
+    .provider-section .col-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+    .custom-navbar {
+        padding: 8px 15px;
+    }
+
+    .hero-card {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .faq-section h2 {
+        font-size: 1.8rem;
+    }
+}
+
+/* ----- Mobile Phones (≤768px) ----- */
+@media (max-width: 768px) {
+    .custom-navbar .right {
+        display: none !important;
+    }
+
+    .custom-navbar .menu-btn {
+        display: block;
+    }
+
+    .user-info span {
+        font-size: 13px;
+    }
+
+    .about-us img {
+        max-width: 100%;
+        margin-top: 20px;
+    }
+
+    .footer {
+        text-align: center;
+    }
+
+    .footer .social-icons {
+        justify-content: center !important;
+    }
+}
+
+/* ----- Small Phones (≤576px) ----- */
+@media (max-width: 576px) {
+    .custom-navbar .logo img {
+        max-height: 40px;
+    }
+
+    .footer ul li {
+        display: block;
+        margin-bottom: 8px;
+    }
+
+    .hero-card {
+        padding: 15px;
+    }
+
+    .hero-title {
+        font-size: 1.7rem;
+    }
+
+    .hero-section {
+        padding: 50px 10px;
+    }
+
+    .hero-card input {
+        font-size: 14px;
+    }
+
+    .hero-card button {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .faq-question {
+        font-size: 14px;
+        padding: 12px;
+    }
+
+    .faq-answer p {
+        font-size: 13px;
+    }
+
+    .footer .social-icons a {
+        font-size: 16px;
+    }
+}
+
+/* ----- Extra Small (≤400px) ----- */
+@media (max-width: 400px) {
+    .hero-title {
+        font-size: 1.5rem;
+    }
+
+    .hero-card {
+        padding: 10px;
+    }
+
+    .hero-card small {
+        font-size: 12px;
+    }
+
+    .provider-section .col-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
