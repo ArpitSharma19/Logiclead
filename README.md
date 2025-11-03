@@ -67,18 +67,6 @@ cd logiclead-fastag
 
 Simply open `index.html` in your browser, or use a lightweight development server:
 
-```bash
-# Using VS Code Live Server or
-npx serve
-```
-
-Then navigate to:
-
-```
-http://localhost:3000
-```
-
----
 
 ## 🧠 How It Works
 
