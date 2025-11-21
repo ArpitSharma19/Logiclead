@@ -19,7 +19,7 @@ A responsive, multi-page web application for **FASTag recharges**, designed with
 
 ---
 
-🚀 Live Demo Explore the live version of my portfolio here: 
+🚀 Live Demo Explore the live version of my Logiclead website here: 
 https://arpitsharma19.github.io/Logiclead/
 
 ## 🏗️ Project Structure
